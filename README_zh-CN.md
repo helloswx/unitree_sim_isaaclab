@@ -2,7 +2,7 @@
   <h1 align="center"> unitree_sim_isaaclab </h1>
   <h3 align="center"> Unitree Robotics </h3>
   <p align="center">
-    <a href="README.md"> English </a> | <a >中文</a> 
+    <a href="README_EN.md"> English </a> | <a >中文</a> 
   </p>
     <p align="center">
     <a href="https://discord.gg/ZwcVwxv5rq" target="_blank"><img src="https://img.shields.io/badge/-Discord-5865F2?style=flat&logo=Discord&logoColor=white" alt="Unitree LOGO"></a>
