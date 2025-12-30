@@ -10,11 +10,23 @@
 </div>
 
 ## 重要事情提前说
+
+### ⚠️ 显卡兼容性
+- **RTX 30/40 系列**（RTX 3080、RTX 3090、RTX 4090 等）：支持 Isaac Sim 4.5.0 或 5.0.0
+- **RTX 50 系列**（包括 RTX 5070 Ti）：**必须使用 Isaac Sim 5.0.0 版本**
+  - 本项目提供的安装脚本已自动处理，RTX 50 系列会自动安装 5.0.0 版本
+  - 手动安装请参考 [INSTALLATION_zh.md](INSTALLATION_zh.md)
+
+### 📦 快速安装
+- 推荐使用自动安装脚本：`bash setup_environment.sh`
+- 首次使用需要接受 Conda TOS（脚本会提示）
+- 详细步骤请参考 [QUICKSTART_zh.md](QUICKSTART_zh.md) 或 [INSTALLATION_zh.md](INSTALLATION_zh.md)
+
+### 🔧 其他重要提示
 - 请使用[官方推荐](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html)的硬件资源进行部署使用
 - 仿真器在第一次启动的时候由于其自身需要加载资源可能会等待一段时间，具体等待时间与硬件性能以及网络环境有关
 - 仿真器运行起来以后会发送/接收和真实机器人一样的DDS话题(如果同一网路中有真实机器人运行请注意区分)，DDS的使用具体可参考[G1控制](https://github.com/unitreerobotics/unitree_sdk2_python/tree/master/example/g1)、[Dex3灵巧手控制](https://github.com/unitreerobotics/unitree_sdk2/blob/main/example/g1/dex3/g1_dex3_example.cpp)
 - 项目中提供的权重文件只针对仿真环境测试使用
-- 目前项目我们只在RTX3080、RTX3090以及RTX4090上进行测试。RTX50系列显卡请使用IsaacSim 5.0.0版本
 - 虚拟场景启动以后请点击 PerspectiveCamera -> Cameras -> PerspectiveCamera 查看主视图的场景。操作步骤如下图所示:
 <table align="center">
     <tr>
@@ -126,15 +138,93 @@
 
 ## 2、⚙️ 环境配置与运行
 
-### 📚 完整安装指南
+### 📚 安装文档导航
 
-**推荐阅读**: [INSTALLATION_zh.md](INSTALLATION_zh.md) - 包含完整的环境安装步骤、常见问题解决方案和 RTX 50 系列显卡特别说明。
+本项目提供了完整的自动化安装脚本和详细文档，帮助您快速搭建开发环境。
 
-**快速开始**: [QUICKSTART_zh.md](QUICKSTART_zh.md) - 三步快速安装流程。
+| 文档 | 说明 | 推荐度 |
+|------|------|--------|
+| [INSTALLATION_zh.md](INSTALLATION_zh.md) | 📖 **完整安装指南** - 详细的安装步骤、常见问题解决方案、RTX 50 系列显卡特别说明 | ⭐⭐⭐⭐⭐ |
+| [QUICKSTART_zh.md](QUICKSTART_zh.md) | ⚡ **快速开始** - 三步快速安装流程 | ⭐⭐⭐⭐ |
+| [README_INSTALL.md](README_INSTALL.md) | 📋 **安装说明导航** - 所有安装相关文档和脚本的索引 | ⭐⭐⭐ |
+| [INSTALL_GUIDE_zh.md](INSTALL_GUIDE_zh.md) | 🔧 **安装指南（备用）** - 详细的安装步骤和问题排查 | ⭐⭐⭐ |
+
+### 🛠️ 安装脚本和工具
+
+项目提供了以下自动化脚本，简化安装过程：
+
+#### 核心安装脚本
+
+- **`setup_environment.sh`** ⭐ - 自动安装脚本
+  - 自动检测和安装所有依赖
+  - 支持 RTX 50 系列显卡（自动使用 Isaac Sim 5.0.0）
+  - 自动处理常见问题（Conda TOS、驱动检查等）
+  - 使用方法：`bash setup_environment.sh`
+
+- **`check_system.sh`** - 系统环境检查脚本
+  - 检查 Ubuntu 版本、NVIDIA 驱动、磁盘空间、网络连接等
+  - 使用方法：`bash check_system.sh`
+
+- **`after_reboot.sh`** - 重启后验证脚本
+  - 验证 NVIDIA 驱动是否正常工作
+  - 继续安装流程
+  - 使用方法：`bash after_reboot.sh`
+
+#### 辅助工具脚本
+
+- **`create_clean_repo.sh`** - 创建全新 Git 仓库脚本
+  - 用于解决 Git 推送问题（仓库太大时）
+  - 创建只包含当前文件的干净仓库
+
+- **`SETUP_NEW_REPO.sh`** - 设置新 GitHub 仓库脚本
+  - 引导式配置新的 GitHub 远程仓库
+
+- **`push_with_verbose.sh`** - 详细模式推送脚本
+  - 用于诊断 Git 推送问题
+
+### 🚀 快速开始（推荐）
+
+#### 方法一：使用自动安装脚本（最简单）
+
+```bash
+# 1. 检查系统环境
+bash check_system.sh
+
+# 2. 接受 Conda TOS（首次使用需要）
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
+# 3. 运行自动安装脚本
+bash setup_environment.sh
+```
+
+#### 方法二：手动安装
+
+参考 [INSTALLATION_zh.md](INSTALLATION_zh.md) 中的详细步骤。
+
+### 📋 系统要求
+
+- **操作系统**: Ubuntu 22.04 或更高版本（推荐 Ubuntu 22.04 或 24.04）
+- **显卡**: NVIDIA RTX 系列
+  - RTX 30/40 系列：Isaac Sim 4.5.0 或 5.0.0
+  - **RTX 50 系列（包括 RTX 5070 Ti）**：**必须使用 Isaac Sim 5.0.0**
+- **内存**: 16GB+（推荐 32GB+）
+- **存储**: 至少 50GB 可用空间
+- **NVIDIA 驱动**: 550+ 版本
+
+### ⚠️ 重要提示
+
+1. **RTX 50 系列显卡**: 必须使用 Isaac Sim 5.0.0 版本（安装脚本已自动处理）
+2. **NVIDIA 驱动**: 确保驱动正常工作（运行 `nvidia-smi` 能正常显示）
+3. **网络**: 安装过程需要下载大量文件，确保网络稳定
+4. **时间**: 完整安装大约需要 1-2 小时（主要取决于网络速度）
+5. **Conda TOS**: 首次使用 conda 需要接受 Terms of Service
 
 ---
 
-该项目需要安装Isaac Sim 4.5.0/Isaac Sim 5.0.0以及Isaac Lab，具体安装可参考[官方教程](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html).或者按照下面流程进行安装。Ubuntu 20.4与Ubuntu 22.4以及以上版本安装方式不同，请根据自己的系统版本以及显卡资源进行安装。
+### 详细安装说明
+
+该项目需要安装Isaac Sim 4.5.0/Isaac Sim 5.0.0以及Isaac Lab，具体安装可参考[官方教程](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html)或按照下面流程进行安装。Ubuntu 20.4与Ubuntu 22.4以及以上版本安装方式不同，请根据自己的系统版本以及显卡资源进行安装。
 
 ### 2.1 Isaac Sim 4.5.0相关环境安装
 
@@ -269,7 +359,21 @@ unitree_sim_isaaclab/
 ├── tools                                                   [存放usd转换和修改相关工具]
 ├── usd                                                     [存放usd的模型文件]
 ├── sim_main.py                                             [主函数] 
-├── reset_pose_test.py                                      [物体位置重置的测试函数] 
+├── reset_pose_test.py                                      [物体位置重置的测试函数]
+├── fetch_assets.sh                                          [资产下载脚本]
+├── send_commands_8bit.py                                   [8位命令发送工具]
+├── send_commands_keyboard.py                               [键盘命令发送工具]
+│
+├── 安装脚本和工具                                           [环境安装相关脚本]
+│   ├── setup_environment.sh                                [自动安装脚本]
+│   ├── check_system.sh                                     [系统检查脚本]
+│   ├── after_reboot.sh                                     [重启后验证脚本]
+│   └── create_clean_repo.sh                                [创建干净仓库脚本]
+│
+└── 文档                                                     [安装和使用文档]
+    ├── INSTALLATION_zh.md                                  [完整安装指南]
+    ├── QUICKSTART_zh.md                                    [快速开始指南]
+    └── README_INSTALL.md                                   [安装文档导航]
 ```
 
 ### 3.2 任务场景搭建步骤
@@ -359,6 +463,74 @@ __all__ = ["pick_place_cylinder_g1_29dof_dex3", "pick_place_cylinder_g1_29dof_de
 
 - ⬜ 持续添加新的任务场景
 - ⬜ 持续进行代码优化
+
+## 📚 其他资源和文档
+
+### GitHub 相关文档
+
+- [GITHUB_UPLOAD.md](GITHUB_UPLOAD.md) - GitHub 上传指南
+  - 如何将项目上传到 GitHub
+  - 配置远程仓库
+  - 推送代码步骤
+
+- [UPLOAD_CHECKLIST.md](UPLOAD_CHECKLIST.md) - 上传检查清单
+  - 上传前的检查项目
+  - 文件检查清单
+  - 提交信息模板
+
+- [TROUBLESHOOT_PUSH.md](TROUBLESHOOT_PUSH.md) - Git Push 问题排查指南
+  - 推送卡住的解决方案
+  - 认证问题处理
+  - 网络和代理问题
+
+- [PUSH_SOLUTIONS.md](PUSH_SOLUTIONS.md) - Git Push 解决方案汇总
+  - 多种推送问题的解决方案
+  - 创建干净仓库的方法
+  - 网络诊断方法
+
+### 项目结构补充说明
+
+除了上述核心目录外，项目还包含以下文件：
+
+```
+unitree_sim_isaaclab/
+│
+├── 安装脚本和工具
+│   ├── setup_environment.sh          [自动安装脚本]
+│   ├── check_system.sh                [系统检查脚本]
+│   ├── after_reboot.sh                [重启后验证脚本]
+│   ├── create_clean_repo.sh           [创建干净仓库脚本]
+│   ├── SETUP_NEW_REPO.sh              [设置新仓库脚本]
+│   └── push_with_verbose.sh          [详细模式推送脚本]
+│
+├── 安装文档
+│   ├── INSTALLATION_zh.md             [完整安装指南]
+│   ├── QUICKSTART_zh.md               [快速开始指南]
+│   ├── INSTALL_GUIDE_zh.md            [安装指南（备用）]
+│   └── README_INSTALL.md              [安装文档导航]
+│
+├── GitHub 相关文档
+│   ├── GITHUB_UPLOAD.md               [GitHub 上传指南]
+│   ├── UPLOAD_CHECKLIST.md            [上传检查清单]
+│   ├── TROUBLESHOOT_PUSH.md           [推送问题排查]
+│   └── PUSH_SOLUTIONS.md              [推送解决方案]
+│
+└── 其他
+    ├── fetch_assets.sh                 [资产下载脚本]
+    ├── send_commands_8bit.py           [8位命令发送工具]
+    ├── send_commands_keyboard.py       [键盘命令发送工具]
+    └── reset_pose_test.py              [位置重置测试]
+```
+
+### 获取帮助
+
+如果遇到问题：
+
+1. **安装问题**: 查看 [INSTALLATION_zh.md](INSTALLATION_zh.md) 中的"常见问题"部分
+2. **系统检查**: 运行 `bash check_system.sh` 检查系统环境
+3. **Git 问题**: 查看 [TROUBLESHOOT_PUSH.md](TROUBLESHOOT_PUSH.md) 或 [PUSH_SOLUTIONS.md](PUSH_SOLUTIONS.md)
+4. **GitHub Issues**: https://github.com/unitreerobotics/unitree_sim_isaaclab/issues
+5. **Discord 社区**: https://discord.gg/ZwcVwxv5rq
 
 ## 🙏 鸣谢
 该代码基于以下开源代码库构建。请访问以下链接查看各自的许可证：
