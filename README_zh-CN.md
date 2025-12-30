@@ -125,6 +125,15 @@
 </table>
 
 ## 2、⚙️ 环境配置与运行
+
+### 📚 完整安装指南
+
+**推荐阅读**: [INSTALLATION_zh.md](INSTALLATION_zh.md) - 包含完整的环境安装步骤、常见问题解决方案和 RTX 50 系列显卡特别说明。
+
+**快速开始**: [QUICKSTART_zh.md](QUICKSTART_zh.md) - 三步快速安装流程。
+
+---
+
 该项目需要安装Isaac Sim 4.5.0/Isaac Sim 5.0.0以及Isaac Lab，具体安装可参考[官方教程](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html).或者按照下面流程进行安装。Ubuntu 20.4与Ubuntu 22.4以及以上版本安装方式不同，请根据自己的系统版本以及显卡资源进行安装。
 
 ### 2.1 Isaac Sim 4.5.0相关环境安装

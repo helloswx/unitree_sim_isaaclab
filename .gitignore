@@ -122,3 +122,10 @@ data/
 assets/
 assets.*
 assets
+
+# ================================
+# 安装相关
+# ================================
+# 注意：setup_environment.sh, check_system.sh, INSTALLATION_zh.md, QUICKSTART_zh.md 等应该被提交
+Miniconda3-*.sh
+*conda*.sh
