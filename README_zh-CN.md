@@ -359,7 +359,7 @@ unitree_sim_isaaclab/
 ├── tools                                                   [存放usd转换和修改相关工具]
 ├── usd                                                     [存放usd的模型文件]
 ├── sim_main.py                                             [主函数] 
-├── reset_pose_test.py                                      [物体位置重置的测试函数]
+├── reset_pose_test.py                                      [物体位置重置的测试函数] 
 ├── fetch_assets.sh                                          [资产下载脚本]
 ├── send_commands_8bit.py                                   [8位命令发送工具]
 ├── send_commands_keyboard.py                               [键盘命令发送工具]

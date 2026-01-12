@@ -5,7 +5,7 @@
     <a href="README_EN.md"> English </a> | <a >中文</a> 
   </p>
     <p align="center">
-    <a href="https://discord.gg/ZwcVwxv5rq" target="_blank"><img src="https://img.shields.io/badge/-Discord-5865F2?style=flat&logo=Discord&logoColor=white" alt="Unitree LOGO"></a>
+  <a href="https://discord.gg/ZwcVwxv5rq" target="_blank"><img src="https://img.shields.io/badge/-Discord-5865F2?style=flat&logo=Discord&logoColor=white" alt="Unitree LOGO"></a>
   </p>
 </div>
 
@@ -294,7 +294,7 @@ python sim_main.py --device cpu  --enable_cameras  --task Isaac-Stack-RgyBlock-G
 通过在数据回放过程中调整光照条件和相机参数，并重新采集图像数据，可用于生成具有多样化视觉特征的增强数据，从而提升模型的泛化能力。
 
 ```
- python sim_main.py --device cpu  --enable_cameras  --task Isaac-Stack-RgyBlock-G129-Dex1-Joint     --enable_dex1_dds --robot_type g129 --replay  --file_path "/home/unitree/Code/xr_teleoperate/teleop/utils/data" --generate_data --generate_data_dir "./data2"
+python sim_main.py --device cpu  --enable_cameras  --task Isaac-Stack-RgyBlock-G129-Dex1-Joint     --enable_dex1_dds --robot_type g129 --replay  --file_path "/home/unitree/Code/xr_teleoperate/teleop/utils/data" --generate_data --generate_data_dir "./data2"
 ```
 - --generate_data: 是否生成新的数据
 - --generate_data_dir: 新数据存放的路径
@@ -344,7 +344,7 @@ unitree_sim_isaaclab/
 │   │
 │   ├── common_termination                                 [不同任务的物体是否超出规定工作范围的判断]
 │   │      ├── base_termination_pick_place_cylinder         
-│   │      ├── base_termination_pick_place_redblock          
+│   │      ├── base_termination_pick_place_redblock 
 │   │
 │   ├── g1_tasks                                            [存放g1相关的所有任务]
 │   │      ├── pick_place_cylinder_g1_29dof_dex1            [圆柱体抓取任务]
